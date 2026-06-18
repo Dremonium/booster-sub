@@ -1,0 +1,53 @@
+# Имя вашей подписки, которое увидят люди в списке профилей
+name: "🚀 Dremonium Booster"
+
+# РАСШИРЕННОЕ ОПИСАНИЕ И ИНФОРМАЦИЯ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ
+profile:
+  # Текст, который будет виден прямо под названием подписки
+  description: "Те кто пользуются, можете скидывать всего 50 рублей в месяц
++79520849078 Озон Банк."
+
+# СПИСОК ВАШИХ СЕРВЕРОВ
+outbounds:
+  - vless://95f39a29-f59b-40a1-b5ed-653347913fbc@dremonium.space:444?type=tcp&encryption=mlkem768x25519plus.native.0rtt.Z4LVQg6PMPwJKpk3zjRwpRd5FUMdaoyBiliCft8b8RM&security=reality&pbk=Lh3YO0vwjskoFFs4rQ4PXvd7IV60C0ClrCJiXL5h7A8&fp=firefox&sni=www.nvidia.com&sid=f10dd17c920896cf&spx=%2F&flow=xtls-rprx-vision#%F0%9F%87%A9%F0%9F%87%AAGermany Германия - Основной
+  - vless://cbc9c953-2f9b-4f5e-8297-e51487653281@gb.dremonium.space:59445?type=tcp&encryption=mlkem768x25519plus.native.0rtt.91CTnIgFk7AqdDlEvZZncyxqXOrrPTw13Rs1VO3ra38&security=reality&pbk=B-br_k355QAB7gDeqMl6oVSKdL2a2Pw7DcNfh5OxZHU&fp=firefox&sni=www.nvidia.com&sid=2e&spx=%2F&flow=xtls-rprx-vision#%F0%9F%87%AC%F0%9F%87%A7London Британия - Запасной
+  - vless://36b979da-b563-41fc-8c94-9da5f873c989@jp.dremonium.space:40851?type=tcp&encryption=mlkem768x25519plus.native.0rtt.KUcIQyHvn13TxVakO-P6TONRvMb-b_lIBNE_5ja-qTI&security=reality&pbk=GXbwCgRh8xiD5xRGlSvTbrGjbZYIRYPkFCybvFM78TE&fp=firefox&sni=www.nvidia.com&sid=3997c3&spx=%2F&flow=xtls-rprx-vision#%F0%9F%87%AF%F0%9F%87%B5Japan Япония - Для игр
+  - vless://4f71d033-43c9-4f4d-a775-c220a496797b@89.208.33.44:443?type=tcp&encryption=mlkem768x25519plus.native.0rtt.DjpdctQzSifRYUOC3f-XXTTkOurGGGvXKB8HYR_iChs&security=reality&pbk=WBjwIFhfTs0oXfmIx3KSnH09fKnxJXyN7nHdJ_6HbGo&fp=firefox&sni=www.nvidia.com&sid=b60a86fe&spx=%2F&flow=xtls-rprx-vision#Booster Каскадный
+# АВТОМАТИЧЕСКИЙ РУТИНГ "RoscomVPN"
+routing:
+  domain_strategy: IPIfNonMatch
+  rules:
+    # 1. Блокировка рекламы и трекеров
+    - domain:
+        - "geosite:win-spy"
+        - "geosite:torrent"
+        - "geosite:category-ads"
+      outbound: block
+
+    # 2. Сайты, которые пойдут через VPN
+    - domain:
+        - "geosite:google-play"
+        - "geosite:github"
+        - "geosite:twitch-ads"
+        - "geosite:youtube"
+        - "geosite:telegram"
+      outbound: proxy
+
+    # 3. Российские и игровые сервисы НАПРЯМУЮ (мимо VPN)
+    - domain:
+        - "geosite:private"
+        - "geosite:category-ru"
+        - "geosite:whitelist"
+        - "geosite:microsoft"
+        - "geosite:apple"
+        - "geosite:epicgames"
+        - "geosite:riot"
+        - "geosite:escapefromtarkov"
+        - "geosite:steam"
+        - "geosite:twitch"
+        - "geosite:pinterest"
+        - "geosite:faceit"
+      ip:
+        - "geoip:private"
+        - "geoip:direct"
+      outbound: direct
